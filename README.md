@@ -27,8 +27,24 @@ A tiny CLI to spin up a local HTTP server that logs every incoming request (meth
 This tool is a generic webhook catcher. No plugins or adapters are required — it prints method, path, sorted headers (e.g., Stripe-Signature, X-GitHub-Event), and prettified JSON bodies. It works great with Stripe, GitHub, Discord, Midtrans, Slack, Shopify, Telegram, and more.
 
 ## Requirements
-- Go 1.20+
+- Go 1.21+
 - (Optional) ngrok account if you want tunneling
+
+## Download (Windows, Linux, macOS)
+Grab prebuilt binaries from Releases:
+- Latest release: https://github.com/0xReLogic/webhook-catcher-cli/releases/latest
+- All releases: https://github.com/0xReLogic/webhook-catcher-cli/releases
+
+Quick start:
+- Windows (PowerShell):
+```powershell
+.\webhook-catcher-cli.exe
+```
+- macOS / Linux:
+```bash
+chmod +x ./webhook-catcher-cli
+./webhook-catcher-cli
+```
 
 ## Install
 ```bash
@@ -171,6 +187,7 @@ Sample capture of a Stripe `payment_intent.succeeded` event received via tunnel:
 ```bash
 go fmt ./...
 go vet ./...
+go test ./...
 go run . -port 3001
 ```
 

@@ -73,7 +73,9 @@ func TestRun_Ngrok_Prompt_SaveToken_OK(t *testing.T) {
 
 	orig := ServeNgrokFunc
 	defer func() { ServeNgrokFunc = orig }()
-	ServeNgrokFunc = func(ctx context.Context, epOpts []config.HTTPEndpointOption, connectOpts []ngrok.ConnectOption, mux http.Handler) error { return nil }
+	ServeNgrokFunc = func(ctx context.Context, epOpts []config.HTTPEndpointOption, connectOpts []ngrok.ConnectOption, mux http.Handler) error {
+		return nil
+	}
 
 	err := Run(Options{Tunnel: true, NgrokToken: ""})
 	if err != nil {
@@ -92,7 +94,9 @@ func TestRun_Ngrok_Prompt_SaveToken_OK(t *testing.T) {
 func TestRun_Ngrok_Error(t *testing.T) {
 	orig := ServeNgrokFunc
 	defer func() { ServeNgrokFunc = orig }()
-	ServeNgrokFunc = func(ctx context.Context, epOpts []config.HTTPEndpointOption, connectOpts []ngrok.ConnectOption, mux http.Handler) error { return errors.New("fail") }
+	ServeNgrokFunc = func(ctx context.Context, epOpts []config.HTTPEndpointOption, connectOpts []ngrok.ConnectOption, mux http.Handler) error {
+		return errors.New("fail")
+	}
 
 	err := Run(Options{Tunnel: true, NgrokToken: "abc"})
 	if err == nil || !strings.Contains(err.Error(), "ngrok listen error") {

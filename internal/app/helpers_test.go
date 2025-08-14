@@ -129,19 +129,19 @@ func TestLoadDotEnvAndSaveEnvVar(t *testing.T) {
 }
 
 func TestLoadDotEnv_CRLF(t *testing.T) {
-    dir := t.TempDir()
-    p := dir + "/.env"
-    content := "#cmt\r\nFOO=bar\r\nQUOTED=\"hi\"\r\n"
-    if err := os.WriteFile(p, []byte(content), 0600); err != nil {
-        t.Fatalf("write failed: %v", err)
-    }
-    _ = os.Unsetenv("FOO")
-    _ = os.Unsetenv("QUOTED")
-    LoadDotEnv(p)
-    if os.Getenv("FOO") != "bar" {
-        t.Fatalf("expected FOO=bar, got %q", os.Getenv("FOO"))
-    }
-    if os.Getenv("QUOTED") != "hi" {
-        t.Fatalf("expected QUOTED=hi, got %q", os.Getenv("QUOTED"))
-    }
+	dir := t.TempDir()
+	p := dir + "/.env"
+	content := "#cmt\r\nFOO=bar\r\nQUOTED=\"hi\"\r\n"
+	if err := os.WriteFile(p, []byte(content), 0600); err != nil {
+		t.Fatalf("write failed: %v", err)
+	}
+	_ = os.Unsetenv("FOO")
+	_ = os.Unsetenv("QUOTED")
+	LoadDotEnv(p)
+	if os.Getenv("FOO") != "bar" {
+		t.Fatalf("expected FOO=bar, got %q", os.Getenv("FOO"))
+	}
+	if os.Getenv("QUOTED") != "hi" {
+		t.Fatalf("expected QUOTED=hi, got %q", os.Getenv("QUOTED"))
+	}
 }
