@@ -1,5 +1,4 @@
-  release:
-    types: [published]
+ # moved under 'on:' → release: types: [published]
 name: release
 
 on:
@@ -25,6 +24,9 @@ on:
         required: false
         type: boolean
         default: false
+
+  release:
+    types: [published]
 
 jobs:
   build:
