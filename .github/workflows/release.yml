@@ -1,0 +1,81 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build binaries (${{ matrix.goos }}-amd64)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            goos: linux
+            ext: ""
+          - os: macos-latest
+            goos: darwin
+            ext: ""
+          - os: windows-latest
+            goos: windows
+            ext: ".exe"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.20.x'
+
+      - name: Run tests with coverage
+        run: |
+          go version
+          go test ./... -coverprofile=coverage.out -covermode=atomic
+
+      - name: Upload coverage to Codecov
+        if: matrix.os == 'ubuntu-latest'
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.out
+          flags: unittests
+          fail_ci_if_error: false
+
+      - name: Build
+        run: |
+          mkdir -p dist
+          go build -ldflags "-s -w" -o "dist/webhook-catcher-cli_${{ matrix.goos }}_amd64${{ matrix.ext }}"
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: amd64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts-${{ matrix.goos }}-amd64
+          path: dist/*
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

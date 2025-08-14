@@ -1,0 +1,24 @@
+# Binaries
+bin/
+dist/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test & coverage
+*.test
+*.out
+coverage*
+
+# Go workspaces
+go.work
+
+# Editors/OS
+.idea/
+.vscode/
+.DS_Store
+
+# Env/config
+.env
+todo.md
