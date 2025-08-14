@@ -79,15 +79,6 @@ var serveNgrokFunc = func(ctx context.Context, epOpts []config.HTTPEndpointOptio
 	return httpServe(ln, mux)
 }
 
-// Helper and handler aliases
-func tryPrettyJSON(b []byte) (string, bool) { return app.TryPrettyJSON(b) }
-func colorMethod(m string) string           { return app.ColorMethod(m) }
-func loadDotEnv(path string)                { app.LoadDotEnv(path) }
-func saveEnvVar(path, key, value string) error {
-	return app.SaveEnvVar(path, key, value)
-}
-func webhookHandler(w http.ResponseWriter, r *http.Request) { app.WebhookHandler(w, r) }
-
 // Run wrapper and options struct for tests expecting run/appOptions in main package.
 // This preserves old field names used by existing root tests while delegating to internal/app.
 type appOptions struct {

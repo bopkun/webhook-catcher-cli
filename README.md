@@ -1,5 +1,7 @@
 # Webhook Catcher CLI
 
+<img align="right" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWFmaGh6aXllNnZ5bjRyemloZ3MwM3pmZjF2ZThja2VwbGgzcWxjMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Rhqc9LeqEqjuZABDmd/giphy.gif" width="160" alt="Webhook Catcher Sticker" />
+
 [![Build](https://github.com/0xReLogic/webhook-catcher-cli/actions/workflows/release.yml/badge.svg)](https://github.com/0xReLogic/webhook-catcher-cli/actions/workflows/release.yml)
 [![codecov](https://codecov.io/gh/0xReLogic/webhook-catcher-cli/branch/main/graph/badge.svg)](https://codecov.io/gh/0xReLogic/webhook-catcher-cli)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/0xReLogic/webhook-catcher-cli?logo=go)](https://go.dev/)
@@ -30,11 +32,11 @@ This tool is a generic webhook catcher. No plugins or adapters are required — 
 - Go 1.21+
 - (Optional) ngrok account if you want tunneling
 
-## Download (Windows, Linux, macOS)
-Grab prebuilt binaries from Releases:
-- Latest release: https://github.com/0xReLogic/webhook-catcher-cli/releases/latest
+## Releases
+- Latest: https://github.com/0xReLogic/webhook-catcher-cli/releases/latest
 - All releases: https://github.com/0xReLogic/webhook-catcher-cli/releases
 
+## Download (Windows, Linux, macOS)
 Quick start:
 - Windows (PowerShell):
 ```powershell
