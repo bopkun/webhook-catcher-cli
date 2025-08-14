@@ -10,6 +10,8 @@ jobs:
   test:
     name: Test and Coverage
     runs-on: ubuntu-latest
+    env:
+      NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
