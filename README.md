@@ -26,7 +26,7 @@ A tiny CLI to spin up a local HTTP server that logs every incoming request (meth
 - Works with Stripe, GitHub, Discord, Midtrans, Slack, Shopify, Telegram, and more
 
 ## Works with any provider
-This tool is a generic webhook catcher. No plugins or adapters are required — it prints method, path, sorted headers (e.g., Stripe-Signature, X-GitHub-Event), and prettified JSON bodies. It works great with Stripe, GitHub, Discord, Midtrans, Slack, Shopify, Telegram, and more.
+This tool is a generic webhook catcher. No plugins or adapters are required it prints method, path, sorted headers (e.g., Stripe-Signature, X-GitHub-Event), and prettified JSON bodies. It works great with Stripe, GitHub, Discord, Midtrans, Slack, Shopify, Telegram, and more.
 
 ## Requirements
 - Go 1.21+
