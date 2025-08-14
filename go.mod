@@ -2,7 +2,7 @@ module github.com/0xReLogic/webhook-catcher-cli
 
 go 1.21
 
-toolchain go1.24.5
+// toolchain go1.24.5
 
 require (
 	github.com/go-stack/stack v1.8.1 // indirect
