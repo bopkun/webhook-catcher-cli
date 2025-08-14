@@ -80,18 +80,13 @@ curl -i -X POST http://127.0.0.1:3000/test -H "Content-Type: application/json" -
 curl -i -X POST http://127.0.0.1:3000/echo -H "Content-Type: text/plain" --data "hello webhook"
 ```
 
-### Tunneling (ngrok)
-Choose option 2 from the menu. Follow the prompt to copy your ngrok token from the dashboard on first run. The app will then print a public URL, for example:
+### Build and Run
+To run from source:
 ```
-[INFO] Public URL: https://abc-123.ngrok-free.app
+go build -o webhook-catcher-cli
+# Start the app (interactive menu will appear, choose 1 for local or 2 for tunnel)
+go run .
 ```
-
-Notes:
-- In Tunnel mode, the app listens on the ngrok public URL only (no local port).
-
-<!-- Environment details intentionally omitted to keep the experience simple. The app will prompt and store your ngrok token automatically on first tunnel run. -->
-
-<!-- Advanced flags are supported but omitted here to keep the README focused on the one‑click experience. -->
 
 ## Star History
 
@@ -179,10 +174,62 @@ Postman Collection (v2.1):
 }
 ```
 
-## Example (Stripe)
+## Examples
+
+### Stripe (payment_intent.succeeded)
 Sample capture of a Stripe `payment_intent.succeeded` event received via tunnel:
 
 ![Stripe webhook screenshot](https://i.imgur.com/x5EsF7Z.png)
+
+PowerShell response example (Invoke-WebRequest output):
+
+![PowerShell response screenshot](https://i.imgur.com/Af7Ljd3.png)
+
+### Quick send examples (Stripe & Discord only)
+Use your current tunnel URL as `<PUBLIC_URL>` (from the app output: "Public URL: https://xxxxx.ngrok-free.app").
+
+- PowerShell
+```powershell
+# Stripe
+$URL = "https://<PUBLIC_URL>/stripe-webhook"
+Invoke-WebRequest -Method POST -Uri $URL -ContentType "application/json" -Headers @{ "Stripe-Signature"="t=1723650000,v1=aaaa" } -Body '{
+  "id":"evt_test_123",
+  "type":"payment_intent.succeeded",
+  "data": { "object": { "id":"pi_123","amount":5000,"currency":"usd","status":"succeeded" } }
+}'
+
+# Discord
+$URL = "https://<PUBLIC_URL>/discord-webhook"
+Invoke-WebRequest -Method POST -Uri $URL -ContentType "application/json" -Body '{
+  "id":"1234567890",
+  "type":"MESSAGE_CREATE",
+  "content":"Hello from Discord webhook simulator",
+  "channel_id":"987654321"
+}'
+```
+
+- Bash
+```bash
+# Stripe
+curl -i -X POST "https://<PUBLIC_URL>/stripe-webhook" \
+  -H "Content-Type: application/json" \
+  -H "Stripe-Signature: t=1723650000,v1=aaaa" \
+  --data '{
+    "id":"evt_test_123",
+    "type":"payment_intent.succeeded",
+    "data":{"object":{"id":"pi_123","amount":5000,"currency":"usd","status":"succeeded"}}
+  }'
+
+# Discord
+curl -i -X POST "https://<PUBLIC_URL>/discord-webhook" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "id":"1234567890",
+    "type":"MESSAGE_CREATE",
+    "content":"Hello from Discord webhook simulator",
+    "channel_id":"987654321"
+  }'
+```
 
 
 ## Development
@@ -192,6 +239,9 @@ go vet ./...
 go test ./...
 go run . -port 3001
 ```
-
 ## License
 MIT
+
+---
+
+Made with ❤️  Allen Elzayn
