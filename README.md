@@ -8,7 +8,6 @@
 [![License](https://img.shields.io/github/license/0xReLogic/webhook-catcher-cli)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/0xReLogic/webhook-catcher-cli?include_prereleases)](https://github.com/0xReLogic/webhook-catcher-cli/releases)
 [![Downloads](https://img.shields.io/github/downloads/0xReLogic/webhook-catcher-cli/total)](https://github.com/0xReLogic/webhook-catcher-cli/releases)
-[![Go Report Card](https://goreportcard.com/badge/github.com/0xReLogic/webhook-catcher-cli)](https://goreportcard.com/report/github.com/0xReLogic/webhook-catcher-cli)
 [![GitHub Stars](https://img.shields.io/github/stars/0xReLogic/webhook-catcher-cli?style=social)](https://github.com/0xReLogic/webhook-catcher-cli/stargazers)
 
 Catch webhooks from Stripe, GitHub, Discord, Midtrans, Slack, Shopify, Telegram, and more no adapters needed.
