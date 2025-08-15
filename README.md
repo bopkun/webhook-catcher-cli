@@ -55,7 +55,7 @@ git clone https://github.com/0xReLogic/webhook-catcher-cli.git
 cd webhook-catcher-cli
 go build -o webhook-catcher-cli
 
-# Or install directly (after repo is public)
+# Or install directly
 # go install github.com/0xReLogic/webhook-catcher-cli@latest
 ```
 
